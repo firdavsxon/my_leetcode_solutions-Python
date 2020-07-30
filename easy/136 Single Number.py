@@ -42,7 +42,6 @@ class Solution:
 		#in place
 		i = 0
 		while i < len(nums):
-			x= nums[i]
 			if nums[i] not in nums[:i] + nums[i+1:]:
 				return nums[i]
 			i += 1
