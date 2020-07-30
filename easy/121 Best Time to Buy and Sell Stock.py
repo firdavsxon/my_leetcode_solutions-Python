@@ -23,14 +23,51 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        length=len(prices)
+        if prices is None or length == 0:
+            return 0
+        if length == 1:
+            return 0
+        max_num = 0
+        i = 0
+        while i < length - 1:
+            j = i + 1
+            temp = max(prices[j:]) - prices[i]
+            if temp> max_num:
+                max_num=temp
+            i += 1
+        if max_num > 0:
+            return max_num
+        return 0
 
+    def maxProfit1(self, prices: List[int]) -> int:
+
+        if prices == []:
+            return 0
+
+        pointer = prices[0]
+        max_profit = 0
         for i in range(len(prices)):
-            if prices[i] < prices[i+1]:
-                continue
-            elif prices[i]>prices[i+1]:
-                buy = prices[i+1]
-                sell = max(prices[i+1:])
-                return sell- buy
+            if max_profit < prices[i] - pointer:
+                max_profit = prices[i] - pointer
+
+            if prices[i] < pointer:
+                pointer = prices[i]
+
+        return max_profit
+
 
 test = Solution()
-print(test.maxProfit([7, 1, 2, 4, 3, 6, 5]))
+print(test.maxProfit([7,6,4,3,2,1]))
+print(test.maxProfit([1,2]))
+print(test.maxProfit([7,1,3,4,5,6,2]))
+print(test.maxProfit([1]))
+print(test.maxProfit([]))
+print(test.maxProfit([2,4,1]))
+print(50*'*')
+print(test.maxProfit1([7,6,4,3,2,1]))
+print(test.maxProfit1([1,2]))
+print(test.maxProfit1([7,1,3,4,5,6,2]))
+print(test.maxProfit1([1]))
+print(test.maxProfit1([]))
+print(test.maxProfit1([2,4,1]))
