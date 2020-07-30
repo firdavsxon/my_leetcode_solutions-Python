@@ -41,7 +41,6 @@ class Solution:
         return 0
 
     def maxProfit1(self, prices: List[int]) -> int:
-
         if prices == []:
             return 0
 
