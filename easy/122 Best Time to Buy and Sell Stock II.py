@@ -3,7 +3,8 @@ Say you have an array prices for which the ith element is
 the price of a given stock on day i.
 
 Design an algorithm to find the maximum profit. You may complete
-as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+as many transactions as you like (i.e., buy one and sell one s
+hare of the stock multiple times).
 
 Note: You may not engage in multiple transactions at the same
 time (i.e., you must sell the stock before you buy again).
@@ -40,5 +41,34 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        pass
+        if prices == []:
+            return 0
 
+        pointer = prices[0]
+        max_profit = 0
+        profits = []
+        for i in range(len(prices)):
+            if max_profit < prices[i] - pointer:
+                max_profit = prices[i] - pointer
+                profits.append(max_profit)
+                pointer = prices[i]
+                max_profit = 0
+
+            if prices[i] < pointer:
+                pointer = prices[i]
+
+        return sum(profits)
+
+    def maxProfit1(self, prices:List[int]) -> int:
+        max_profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i - 1]:
+                max_profit += (prices[i] - prices[i - 1])
+        return max_profit
+
+
+
+test = Solution()
+print(test.maxProfit([7,6,4,3,2,1]))
+print(test.maxProfit([7,1,5,3,6,4,5,3,8]))
+print(test.maxProfit1([7,1,5,3,6,4,5,3,8]))
