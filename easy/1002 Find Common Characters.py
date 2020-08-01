@@ -32,7 +32,14 @@ from typing import List
 from collections import Counter
 class Solution:
 	def commonChars(self, A: List[str]) -> List[str]:
-		pass
+		d={}
+		for i in A[0]:
+			if i not in d:
+				d[i] = 1
+			elif i in d:
+				d[i] += 1
+		
+		print(d)
 
 	def commonChars1(self, A: List[str]):
 		output = Counter(A[0])
@@ -47,5 +54,5 @@ class Solution:
 
 
 test = Solution()
-print(test.commonChars1(["bella","label","roller"]))
-print(test.commonChars1(["cool","lock","cook"]))
+print(test.commonChars(["bella","label","roller"]))
+# print(test.commonChars1(["cool","lock","cook"]))
