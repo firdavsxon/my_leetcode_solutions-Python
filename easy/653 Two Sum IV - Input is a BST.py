@@ -41,21 +41,49 @@ class TreeNode:
 class Solution:
 	def findTarget(self, root: TreeNode, k: int):
 		current = root
+		stack = []
+		stack1 = []
 		d = {}
-		while current is not None:
-			if k - current.left.val not in d:
-				d[current.left.val] = 1
-			elif k - current.left.val in d:
+		while True:
+			if current is not None:
+				stack.append(current)
+				current = current.left
+			elif stack:
+				current = stack.pop()
+				stack1.append(current.val)
+				current = current.right
+			else:
+				break
+		for i in stack1:
+			if k - i not in d:
+				d[i] = 1
+			else:
 				return True
-			if k-current.right.val not in d:
-				d[current.right.val]=1
-			elif k-current.right.val in d:
-				return True
-		self.findTarget(current.left, k)
-		self.findTarget(current.right, k)
 		return False
 
+# other peoples algorithm
+	def findTarget1(self, root: TreeNode, k: int) -> bool:
+		if not root:
+			return None
 
+		seen = set()
+
+		def helper(node):
+			if k - node.val in seen:
+				return True
+			seen.add(node.val)
+
+			if node.left and helper(node.left):
+				return True
+			if node.right and helper(node.right):
+				return True
+			return False
+
+		return helper(root)
+
+	# Brute force, go through all nodes in the tree, adding to a set
+	# If target - currNode in seen, return True
+	# Else if tree is exhausted, return False
 test = Solution()
 print(test.findTarget([5,3,6,2,4,None,7], 9))
 
