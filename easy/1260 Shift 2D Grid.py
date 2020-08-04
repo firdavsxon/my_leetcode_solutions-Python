@@ -11,15 +11,24 @@ Return the 2D grid after applying shift operation k times.
 
 
 Example 1:
+Input: grid = [	[1,2,3],
+				[4,5,6],
+				[7,8,9]],    k = 1
+Output: [[9,1,2],
+		[3,4,5],
+		[6,7,8]]
 
-				[[9,1,2],[3,4,5],[6,7,8]]
-Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 1
-Output: [[9,1,2],[3,4,5],[6,7,8]]
 Example 2:
 
+Input: grid = [	[3,8,1,9],
+				[19,7,2,5],
+				[4,6,11,10],
+				[12,0,21,13]],    k = 4
+Output: [	[12,0,21,13],
+			[3,8,1,9],
+			[19,7,2,5],
+			[4,6,11,10]]
 
-Input: grid = [[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], k = 4
-Output: [[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]]
 Example 3:
 
 Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9
@@ -36,26 +45,28 @@ n == grid[i].length
 0 <= k <= 100
 
 """
-from typing import  List
+from typing import List
+from collections import deque
+
 
 class Solution:
+	#others
 	def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
 
-		m = len(grid)-1
-		i=0
-		while i != k:
-			n = len(grid[i])-1
-			j=0
-			while j!=k:
-				grid[i][j], grid[i][j+1] = grid[i][j+1], grid[i][j]
-				j+=1
-			i+=1
-		return grid
+		m = len(grid)
+		n = len(grid[0])
+		row_move = (k//n) % m
+		col_move = k % n
+
+		result = []
+		if col_move>0:
+			for index, row in enumerate(grid):
+				result.append(grid[index-1][-col_move:] + grid[index][:-col_move])
+		else:
+			result = grid
+		return result[-row_move:] + result[:-row_move]
 
 
 test = Solution()
-print(test.shiftGrid([[1,2,3],[4,5,6],[7,8,9]], 1))
-print(test.shiftGrid([[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], 1))
-
-
-
+print(test.shiftGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
+print(test.shiftGrid([[3, 8, 1, 9], [19, 7, 2, 5], [4, 6, 11, 10], [12, 0, 21, 13]], 1))
