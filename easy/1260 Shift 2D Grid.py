@@ -46,7 +46,6 @@ n == grid[i].length
 
 """
 from typing import List
-from collections import deque
 
 
 class Solution:
@@ -67,22 +66,21 @@ class Solution:
 		# return result[-row_move:] + result[:-row_move]
 
 		m = len(grid)
-
+		grid_copy = grid[:]
 		for i in range(k):
-			grid_copy = grid[:]
 			for j in range(m):
 				if j == 0:
 					# first element will be last item of original list ([grid_copy[m - 1][-1]]) plus other
 					# elements of first list until last element (grid_copy[j][:-1])
 					grid_copy[j] = [grid_copy[m - 1][-1]] + grid_copy[j][:-1]
-				else:  # else next elem
+				else:  # else next element
 					grid_copy[j] = [grid[j - 1][-1]] + grid[j][:-1]
 
-			grid = grid_copy
+			grid = grid_copy[:]
 
 		return grid
 
 
 test = Solution()
 print(test.shiftGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
-print(test.shiftGrid([[3, 8, 1, 9], [19, 7, 2, 5], [4, 6, 11, 10], [12, 0, 21, 13]], 4))
+print(test.shiftGrid([[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], 4))

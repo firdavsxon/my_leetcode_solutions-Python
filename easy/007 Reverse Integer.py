@@ -56,16 +56,14 @@ class Solution:
 				return 0
 
 	def reverse2(self, x: int) -> int:
-		start_time = time.time()
+
 		res, remaining = 0, abs(x)
 		while remaining:
 			res = res * 10 + remaining % 10
 			remaining //= 10
 		if not (-(2 ** 31) <= res <= (2 ** 31 - 1)):
-			print(f'total time: {time.time() - start_time}')
 			return 0
 		else:
-			print(f'total time: {time.time() - start_time}')
 			return res if x > 0 else - res
 
 	def reverse3(self, x: int) -> int:
@@ -100,6 +98,6 @@ class Solution:
 
 number = Solution()
 print(number.reverse(123456789))
-print(number.reverse2(123456789))
+print(number.reverse2(1563847412))
 print(number.reverse3(123456789))
 print(number.reverse4(1234567890))
