@@ -57,7 +57,7 @@ class Solution:
 					break
 		matrix.reverse()
 
-	def rotate1(selfself, matrix: List[List[int]]):
+	def rotate1(self, matrix: List[List[int]]):
 		matrix.reverse()
 		for i in range(len(matrix)):
 			for j in range(i):
