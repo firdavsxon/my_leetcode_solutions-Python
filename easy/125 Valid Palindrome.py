@@ -44,6 +44,9 @@ class Solution:
 				return False
 		return True
 
+		# s = "".join(re.findall("[a-zA-Z0-9]", s)).lower()
+		# return s == s[::-1]
+
 test = Solution()
 # print(test.isPalindrome("A man, a plan, a canal: Panama"))
 # print(test.isPalindrome("race a car"))
