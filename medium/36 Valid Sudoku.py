@@ -69,12 +69,12 @@ class Solution:
 						return False
 		for i in range(0, len(board), 3):
 			for j in range(0, len(board), 3):
-				d3={}
+				d3 = {}
 				for k in range(3):
 					for l in range(3):
-						if board[i+k][j+l]!='.':
+						if board[i+k][j+l] != '.':
 							if board[i+k][j+l] not in d3:
-								d3[board[i+k][j+l]]=i
+								d3[board[i+k][j+l]] = i
 							else:
 								return False
 
