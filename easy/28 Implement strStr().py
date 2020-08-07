@@ -33,14 +33,15 @@ haystack and needle consist only of lowercase English characters.
 
 class Solution:
 	def strStr(self, haystack: str, needle: str) -> int:
-		if needle=='':
+		if needle == '':
 			return 0
-		# return haystack.find(needle)
+		# return haystack.find(needle)R
 		if needle in haystack:
 			return haystack.index(needle)
 		else:
 			return -1
-test = Solution()
-print(test.strStr(haystack = "hello", needle = "ll"))
-print(test.strStr(haystack = "aaaaa", needle = "bba"))
 
+
+test = Solution()
+print(test.strStr(haystack="hello", needle="ll"))
+print(test.strStr(haystack="aaaaa", needle="bba"))
