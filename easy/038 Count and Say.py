@@ -63,5 +63,22 @@ class Solution:
 
 		return base
 
+	def countAndSay1(self, n: int) -> str:
+		a = 1
+		b = ''
+		s = "1"
+		while n - 1:
+			s = s + str(0)
+			for i in range(len(s) - 1):
+				if s[i] == s[i + 1]:
+					a += 1
+				else:
+					b += str(a) + s[i]
+					a = 1
+			s = b
+			n -= 1
+			b = ''
+		return s
+
 test = Solution()
-print(test.countAndSay(6))
+print(test.countAndSay1(6))
