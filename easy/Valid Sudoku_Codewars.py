@@ -23,8 +23,13 @@ def valid_solution(board):
 						return False
 	return True
 
+def validSolution1(board):
+	blocks = [[board[x+a][y+b] for a in (0, 1, 2) for b in (0, 1, 2)] for x in (0, 3, 6) for y in (0, 3, 6)]
+	x=filter(lambda x: set(x) != set(range(1, 10)), board + zip(*board) + blocks)
+	return not x
 
-print(valid_solution([[1, 2, 3, 4, 5, 6, 7, 8, 9],
+
+print(validSolution1([[1, 2, 3, 4, 5, 6, 7, 8, 9],
 					[2, 3, 4, 5, 6, 7, 8, 9, 1],
 					[3, 4, 5, 6, 7, 8, 9, 1, 2],
 					[4, 5, 6, 7, 8, 9, 1, 2, 3],

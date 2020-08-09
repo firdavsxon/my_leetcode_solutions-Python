@@ -35,4 +35,33 @@ is read as "11", so the answer is the concatenation of "12" and "11" which is "1
 
 class Solution:
 	def countAndSay(self, n: int) -> str:
-		pass
+
+		if n == 1:
+			return '1'
+		base = '1'
+		for i in range(2, n + 1):
+			ind = 0
+			cur_char = base[0]
+			cur_counter = 0
+			next_base = []
+
+			while ind < len(base):
+				if base[ind] == cur_char:
+					cur_counter += 1
+				else:
+					next_base.append(str(cur_counter))
+					next_base.append(cur_char)
+
+					cur_char = base[ind]
+					cur_counter = 1
+
+				ind += 1
+
+			next_base.append(str(cur_counter))
+			next_base.append(cur_char)
+			base = ''.join(next_base)
+
+		return base
+
+test = Solution()
+print(test.countAndSay(6))
