@@ -35,3 +35,6 @@ class Solution:
 		temp.next = l1 or l2
 		return head.next
 
+test = Solution()
+
+
