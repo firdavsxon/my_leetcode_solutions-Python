@@ -34,6 +34,8 @@ class Solution:
 
 	def isPalindrome1(self, head: ListNode):
 
+
+
 		current_node = head
 
 		slow, fast = head, head
