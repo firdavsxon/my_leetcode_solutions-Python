@@ -32,5 +32,22 @@ class TreeNode:
 
 
 class Solution:
+
 	def isSymmetric(self, root: TreeNode) -> bool:
-		pass
+		if not root:
+			return True
+		return self.isMirror(root, root)
+
+	def isMirror(self, left, right):
+
+		if left is None and right is None:
+			return True
+		if left is None or right is None:
+			return False
+
+		if left.val == right.val:
+			inpair = self.isMirror(left.right, right.left)
+			outpair = self.isMirror(left.left, right.right)
+
+			return outpair and inpair
+		return False
