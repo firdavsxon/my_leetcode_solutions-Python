@@ -19,7 +19,6 @@ return its bottom-up level order traversal as:
 ]
 """
 
-
 # Definition for a binary tree node.
 from typing import List
 
@@ -29,6 +28,27 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
+
 class Solution:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
-        pass
+        levels = []
+        if not root:
+            return levels
+
+        def helper(node, level):
+            # start the current level
+            if len(levels) == level:
+                levels.append([])
+
+            # append the current node value
+            levels[level].append(node.val)
+
+            # process child nodes for the next level
+            if node.left:
+                helper(node.left, level + 1)
+            if node.right:
+                helper(node.right, level + 1)
+
+        helper(root, 0)
+        return levels[::-1]
