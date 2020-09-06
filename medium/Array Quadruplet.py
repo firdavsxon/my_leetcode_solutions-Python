@@ -30,26 +30,57 @@ Constraints:
 
 
 def find_array_quadruplet(arr, s):
+	# arr.sort()
+	# n=len(arr)
+	# if n < 4:
+	# 	return []
+	#
+	# for i in range(n - 4):
+	# 	for j in range(i + 1, n - 3):
+	#
+	# 		k = s - (arr[i] + arr[j])  # k stores ramaning sum
+	# 		low = j + 1
+	# 		high = n - 1
+	#
+	# 		while low < high:
+	# 			if arr[low] + arr[high] < k:
+	# 				low += 1
+	# 			elif arr[low] + arr[high] > k:
+	# 				high -= 1
+	# 			else:
+	# 				return [arr[i], arr[j], arr[low], arr[high]]
+	# return []
+	res = []
+	if not arr or len(arr)<4:
+		return res
+	size = len(arr)
 	arr.sort()
-	n=len(arr)
 
-	if n < 4:
-		return []
-
-	for i in range(n - 4):
-		for j in range(i + 1, n - 3):
-
-			k = s - (arr[i] + arr[j])  # k stores ramaning sum
-			low = j + 1
-			high = n - 1
-
-			while low < high:
-				if arr[low] + arr[high] < k:
-					low += 1
-				elif arr[low] + arr[high] > k:
-					high -= 1
+	for i in range(len(arr)):
+		for j in range(i+1, len(arr)):
+			left = j+1
+			right = size-1
+			while left < right:
+				summa = arr[i] + arr[j] + arr[left] + arr[right]
+				if summa == s:
+					temp_list = [arr[i], arr[j], arr[left], arr[right]]
+					res.append(temp_list)
+					left_value = arr[left]
+					while left < size and arr[left] == left_value:
+						left += 1
+					right_value = arr[right]
+					while right > left and arr[right] == right_value:
+						right -= 1
+				elif summa < s:
+					left += 1
 				else:
-					return [arr[i], arr[j], arr[low], arr[high]]
-	return []
+					right -= 1
+			while j+1 < size and arr[j + 1] == arr[j]:
+				j += 1
+		while i+1 < size and arr[i+1] == arr[i]:
+			i += 1
+	return res
 
-print(find_array_quadruplet(arr = [2, 7, 4, 0, 9, 5, 1, 3], s = 20))
+
+print(find_array_quadruplet(arr=[2, 7, 4, 0, 9, 5, 1, 3], s=20))
+print(find_array_quadruplet(arr=[1, 0, -1, 0, -2, 2], s=0))
