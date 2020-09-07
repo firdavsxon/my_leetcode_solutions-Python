@@ -34,7 +34,6 @@ class Solution:
 		res = []
 		for i in range(len(nums)):
 			res.append(sum(nums[:i + 1]))
-
 		return res
 
 test = Solution()
