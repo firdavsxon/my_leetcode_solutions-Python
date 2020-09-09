@@ -27,13 +27,19 @@ class Solution:
 		window_start, matched = 0, 0
 		char_frequency = {}
 
+		for chr in s1:
+			if chr not in char_frequency:
+				char_frequency[chr] = 0
+			char_frequency[chr] += 1
+
 		for window_end in range(len(s2)):
 			right = s2[window_end]
 			if right in char_frequency:
 				char_frequency[right] -= 1
-				if char_frequency[right] == 0:
+				if char_frequency[right] >= 0:
 					matched += 1
-			if matched == len(char_frequency):
+
+			while matched == len(char_frequency):
 				return True
 
 			if window_end >= len(s1)-1:
@@ -50,6 +56,7 @@ class Solution:
 
 
 
+
 test = Solution()
-print(test.checkInclusion(s1='ab', s2='eidbaooo'))
+print(test.checkInclusion(s1='ab', s2='eidboaoo'))
 
