@@ -24,9 +24,63 @@ def word_count_engine(document):
 
 	return sorted_list
 
+#
+# document = "Practice makes perfect. you'll onlyget Perfect by practice. just practice!"
+# print(word_count_engine(document))
+# print(word_count_engine("Practice makes perfect, you'll get perfecT by practice. just practice! just just just!!"))
 
-document = "Practice makes perfect. you'll onlyget Perfect by practice. just practice!"
-print(word_count_engine(document))
-print(word_count_engine("Practice makes perfect, you'll get perfecT by practice. just practice! just just just!!"))
+
+
+# Another exercise
+"""
+
+input: s = 'ababcbacadefegdehijhklij'
+output: lst = [9,7,8]
+
+-----
+input: s= 'abc' 
+output: lst = [1,1,1]
+
+-----
+input: s= 'abca' 
+output: lst = [4] 
+explanation: because a appears in list more than once total will be 4
+
+"""
+
+
+def func(s):
+	res = []
+	starting_point = 0
+	ending_point = 0
+	max_length = 0
+	between_letters = {}
+	while starting_point < len(s):
+		right = len(s) - 1
+		left = starting_point
+
+		while left < right:
+			if s[left] == s[right]:
+				ending_point = right
+				max_length = ending_point - starting_point + 1
+				between_letters = s[starting_point:ending_point+1]
+				left = ending_point
+				right = len(s)-1
+				break
+			elif left >= ending_point and s[right] in between_letters:
+					ending_point = right
+					max_length = ending_point - starting_point + 1
+			else:
+				right -= 1
+	starting_point = ending_point + 1
+	res.append(max_length)
+
+	return res
+
+
+s = 'ababcbacacdefegdehijhklij'
+s1 = 'abca'
+
+print(func(s1))
 
 
