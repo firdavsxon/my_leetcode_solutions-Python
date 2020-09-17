@@ -66,9 +66,6 @@ def reverse(head):
 	return prev
 
 
-
-
-
 def main():
 	head = Node(2)
 	head.next = Node(4)
@@ -78,4 +75,6 @@ def main():
 	head.next.next.next.next.next = Node(12)
 	reorder(head)
 	head.print_list()
+
+
 main()
