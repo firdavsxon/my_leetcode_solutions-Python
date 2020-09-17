@@ -78,6 +78,7 @@ def func(s):
 	return res
 
 
+
 s = 'ababcbacacdefegdehijhklij'
 s1 = 'abca'
 
