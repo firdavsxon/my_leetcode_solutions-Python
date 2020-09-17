@@ -22,5 +22,19 @@ Output: 4
 
 """
 
+
 def find_duplicate(nums):
-	pass
+	i, n = 0, len(nums)
+	while i < n:
+		if nums[i] != i+1:
+			j = nums[i] - 1
+			if nums[i] != nums[j]:
+				nums[i], nums[j] = nums[j], nums[i]
+			else:
+				return nums[i]
+		else:
+			i += 1
+	return -1
+
+
+print(find_duplicate([2, 4, 1, 4, 4]))

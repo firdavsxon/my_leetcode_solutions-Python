@@ -14,8 +14,9 @@ Input: [8, 3, 5, 2, 4, 6, 0, 1]
 Output: 7
 """
 
+
 def find_missing_number(nums):
-	i, n = 0 , len(nums)
+	i, n = 0, len(nums)
 	while i < n:
 		j = nums[i]
 		if nums[i] < n and nums[i] != nums[j]:
@@ -28,4 +29,5 @@ def find_missing_number(nums):
 			return i
 	return n
 
-print(find_missing_number([4, 0, 3, 1]))
+
+print(find_missing_number([4, 5, 0, 3, 1]))
