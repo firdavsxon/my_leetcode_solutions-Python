@@ -59,7 +59,7 @@ def backspace_compare(str1, str2):
 	index2 = len(str2) - 1
 
 	while index1 >= 0 or index2>= 0:
-		i1= get_next_valid_char_index(str1, index1)
+		i1 = get_next_valid_char_index(str1, index1)
 		i2 = get_next_valid_char_index(str2, index2)
 		if i1 < 0 and i2<0:
 			return True
@@ -89,6 +89,6 @@ def get_next_valid_char_index(str, index):
 
 
 # print(comparing_strings_backspaces(str1="xy#z", str2="xzz#" ))
-print(comparing_strings_backspaces(str1="xy#z", str2="xzz#" ))
+print(comparing_strings_backspaces(str1="ab#c", str2="ad#c" ))
 
 
