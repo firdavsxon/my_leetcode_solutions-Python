@@ -1,19 +1,11 @@
 # Google
-def utf8char_len(lst: bytes):
-	start = 0
-	count = 0
-	end = len(lst) - 1
-	while start <= end:
-		if start == 0 and lst[start] == 0:
-			if 1 in lst[1:]:
-				return 1
-			else:
-				return 0
-		elif start == 0 and lst[start] == 1:
-			start += 1
-			count += 1
-		elif lst[start] == 0:
-			return count
+from typing import List
+
+def utf8char_len(lst: List[bytes]):
+	return len(lst)
 
 
-print(utf8char_len(10101010))
+print(utf8char_len(bytearray(11100000)))
+
+import locale
+print(locale.getpreferredencoding())
