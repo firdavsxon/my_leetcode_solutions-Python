@@ -62,6 +62,7 @@ class Solution:
 
 test = Solution()
 print(test.threeSum([-1, 0, 1, 2, -1, -4]))
+print(test.threeSum([0, 0, 0, 0]))
 
 print(test.threeSum([82597, -9243, 62390, 83030, -97960, -26521, -61011,
 					 83390, -38677, 12333, 75987, 46091, 83794, 19355, -71037,
