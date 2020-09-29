@@ -12,6 +12,7 @@ Example1:
 """
 from collections import deque
 
+
 class TreeNode:
 	def __init__(self, val):
 		self.val = val
@@ -39,6 +40,7 @@ def traverse(root):
 
 	return result
 
+
 def main():
 	root = TreeNode(12)
 	root.left = TreeNode(7)
@@ -48,6 +50,5 @@ def main():
 	root.right.right = TreeNode(5)
 	print("Level order traversal: " + str(traverse(root)))
 
+
 main()
-
-
