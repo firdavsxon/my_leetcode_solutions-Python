@@ -23,18 +23,29 @@ from typing import List
 
 class Solution:
 	def productExceptSelf(self, nums: List[int]) -> List[int]:
-		length = len(nums)  # length array
-		L, R, answer = [0] * length, [0] * length, [0] * length
-
-		L[0] = 1
-		for i in range(1, length):
-			L[i] = nums[i - 1] * L[i - 1]
-		R[length - 1] = 1
-		for i in reversed(range(length - 1)):
-			R[i] = nums[i + 1] * R[i + 1]
-		for i in range(length):
-			answer[i] = L[i] * R[i]
-		return answer
+		# length = len(nums)  # length array
+		# L, R, answer = [0] * length, [0] * length, [0] * length
+		#
+		# L[0] = 1
+		# for i in range(1, length):
+		# 	L[i] = nums[i - 1] * L[i - 1]
+		# R[length - 1] = 1
+		# for i in reversed(range(length - 1)):
+		# 	R[i] = nums[i + 1] * R[i + 1]
+		# for i in range(length):
+		# 	answer[i] = L[i] * R[i]
+		# return answer
+		p = 1
+		n = len(nums)
+		output = []
+		for i in range(0, n):
+			output.append(p)
+			p = p * nums[i]
+		p = 1
+		for i in range(n - 1, -1, -1):
+			output[i] = output[i] * p
+			p = p * nums[i]
+		return output
 
 
 test = Solution()
