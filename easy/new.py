@@ -1,37 +1,39 @@
-def commonPrefix(inputs):
-    inputs_list = [i for i in inputs]
-    inputs_list = inputs_list[::-1]
-    leave_suffix = []
-    length = 0
-    length += len(inputs)
-    for i in range(len(inputs)):
-        leave_suffix.append(inputs_list.pop())
-        comparing_length = len(leave_suffix)
-        if inputs_list[-comparing_length:] == leave_suffix[::-1]:
-            length += comparing_length
-    return length
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.right = right
+        self.left= left
+
+def dfs(root):
+    if not root:
+        return
+
+    if root.left:
+        dfs(root.left)
+
+    if root.right:
+        dfs(root.right)
+    print(root.val)
+
+def main():
+    root = TreeNode(10)
+    root.left = TreeNode(7)
+    root.right = TreeNode(15)
+    root.left.left = TreeNode(6)
+    root.left.right = TreeNode(9)
+    root.right.left = TreeNode(12)
+    root.right.right = TreeNode(16)
+
+    print("Printing nodes: ")
+    dfs(root)
 
 
-print(commonPrefix('abcabcd'))
 """ 
-''    'ababaa'   6
-'a'   'babaa'    0
-'ab'   'abaa'    2
-'aba'   'baa'    0
-'abab'   'aa'    0
-'ababa'   'a'    0
-'ababaa'   ''    0
-8
+                10
+                /\
+               7    15
+              /\    /\
+             6  9  12 16
+               
 """
-
-""" 
-''    'abcabcd'   7
-'a'   'bcabcd'    0
-'ab'   'cabcd'    0
-'abc'   'abcd'    3
-'abca'   'bcd'    0
-'abcab'   'cd'    0
-'abcabcd'  'd'    0
-'abcabcd'   ''    0
-10
-"""
+main()
