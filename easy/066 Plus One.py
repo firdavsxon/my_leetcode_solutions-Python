@@ -25,12 +25,27 @@ class Solution:
         d_str = ''
         for i in digits:
             d_str += str(i)
-        d_int  = int(d_str)
+        d_int = int(d_str)
         d_int += 1
         d_str = str(d_int)
         return [int(i) for i in d_str]
 
+
+    def plus_one(self, digits):
+        digits[-1] += 1
+        for i in reversed(range(1, len(digits))):
+            if digits[i] != 10:
+                break
+            digits[i] = 0
+            digits[i-1] += 1
+        else:
+            if digits[0] == 10:
+                digits[0] = 1
+                digits.append(0)
+        return digits
+
+
 test = Solution()
-print(test.plusOne([1,2,3,4]))
-print(test.plusOne([9]))
-print(test.plusOne([999]))
+print(test.plus_one([1,2,3,4]))
+print(test.plus_one([9]))
+print(test.plus_one([9,9,9]))
