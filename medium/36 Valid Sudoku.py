@@ -79,6 +79,8 @@ class Solution:
 								return False
 
 		return True
+
+
 # others
 
 	def others_solution1(self, board: List[List[str]]) -> bool:
