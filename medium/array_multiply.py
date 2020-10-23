@@ -24,5 +24,5 @@ def multiply(num1: List[int], num2: List[int]) -> List[int]:
 	res = res[next((i for i, x in enumerate(res) if x != 0), len(res)):] or [0]
 	return [sign * res[0]] + res[1:]
 
-
+print(multiply([1,2,3], [9,8,7]))
 print(multiply([1, 2, 3, 4, 5], [-1, 3, 45, 5, 6, 7, 8, 9, 98]))
