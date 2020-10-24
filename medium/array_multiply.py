@@ -21,6 +21,7 @@ def multiply(num1: List[int], num2: List[int]) -> List[int]:
 			res[i + j] += res[i + j + 1] // 10
 			res[i + j + 1] %= 10
 	# remove the leading zeros
+
 	res = res[next((i for i, x in enumerate(res) if x != 0), len(res)):] or [0]
 	return [sign * res[0]] + res[1:]
 
