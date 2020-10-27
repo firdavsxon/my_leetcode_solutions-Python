@@ -25,6 +25,6 @@ class Solution:
 
 
 s = "PPALLP"
-obj = Solution()
-test = obj.checkRecord(s)
-print(test)
+test = Solution()
+print(test.checkRecord(s))
+
