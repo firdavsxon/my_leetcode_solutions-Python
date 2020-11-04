@@ -47,8 +47,9 @@ class Solution:
         pointer = prices[0]
         max_profit = 0
         for i in range(len(prices)):
-            if max_profit < prices[i] - pointer:
-                max_profit = prices[i] - pointer
+            # if max_profit < prices[i] - pointer:
+            #     max_profit = prices[i] - pointer
+            max_profit = max(max_profit, prices[i]-pointer)
 
             if prices[i] < pointer:
                 pointer = prices[i]
