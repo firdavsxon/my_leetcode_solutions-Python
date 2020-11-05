@@ -23,3 +23,30 @@ solution.reset();      // Resets the array back to its original configuration [1
 solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
 
 """
+from typing import List
+
+
+class Solution:
+
+	def __init__(self, nums: List[int]):
+		self.nums = nums
+		self.shuffling = nums[:]
+
+	def reset(self) -> List[int]:
+		"""
+		Resets the array to its original configuration and return it.
+		"""
+		return self.nums
+
+	def shuffle(self) -> List[int]:
+		"""
+		Returns a random shuffling of the array.
+		"""
+		import random
+		random.shuffle(self.shuffling)
+		return self.shuffling
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(nums)
+# param_1 = obj.reset()
+# param_2 = obj.shuffle()
