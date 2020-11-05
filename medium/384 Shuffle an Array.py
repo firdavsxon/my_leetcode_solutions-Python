@@ -51,4 +51,4 @@ nums = [1, 2, 3]
 obj = Solution(nums)
 print(obj.shuffle(), end =' ')
 print(obj.reset(), end = ' ')
-print(obj.shuffle(), end= ' ')x
+print(obj.shuffle(), end= ' ')
