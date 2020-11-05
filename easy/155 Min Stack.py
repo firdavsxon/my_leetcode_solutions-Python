@@ -41,7 +41,7 @@ class MinStack:
 		if self.stack == []:
 			self.stack.append([x,x])
 		else:
-			self.stack.append([x, min(self.stack[-1])])
+			self.stack.append([x, min(x, self.stack[-1][1])])
 
 	def pop(self) -> None:
 		self.stack.pop()
@@ -53,8 +53,15 @@ class MinStack:
 		return self.stack[-1][1]
 
 # Your MinStack object will be instantiated and called as such:
-# obj = MinStack()
-# obj.push(x)
-# obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.getMin()
+obj = MinStack()
+print(obj.push(-2))
+print(obj.push(0))
+print(obj.push(-3))
+print(obj.getMin())
+print(obj.pop())
+print(obj.top())
+print(obj.getMin())
+#
+# ["MinStack","push","push","push","getMin","pop","top","getMin"]
+# [[],[-2],[0],[-3],[],[],[],[]]
+
