@@ -47,6 +47,8 @@ class Solution:
 		return self.shuffling
 
 # Your Solution object will be instantiated and called as such:
-# obj = Solution(nums)
-# param_1 = obj.reset()
-# param_2 = obj.shuffle()
+nums = [1, 2, 3]
+obj = Solution(nums)
+print(obj.shuffle(), end =' ')
+print(obj.reset(), end = ' ')
+print(obj.shuffle(), end= ' ')x
