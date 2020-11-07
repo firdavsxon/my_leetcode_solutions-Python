@@ -17,3 +17,20 @@ Example 3:
 Input: n = 1
 Output: 0
 """
+
+
+class Solution:
+	def countPrimes(self, n: int) -> int:
+		counter = [1] * n
+		counter[0:2] = [0, 0]
+		start = 2
+		while start ** 2 < n:
+			if counter[start] == 1:
+				for i in range(2 * start, n, start):
+					counter[i] = 0
+			start += 1
+		return sum(counter)
+
+
+test = Solution()
+print(test.countPrimes(10))
