@@ -38,3 +38,14 @@ Constraints:
 
 The input must be a binary string of length 32
 """
+
+
+class Solution:
+	def hammingWeight(self, n: int) -> int:
+		one = 0
+		while n:
+			n &= n-1
+			one += 1
+		return one
+test = Solution()
+print(test.hammingWeight(11))
