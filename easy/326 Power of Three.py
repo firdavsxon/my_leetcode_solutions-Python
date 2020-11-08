@@ -22,3 +22,14 @@ Example 4:
 Input: n = 45
 Output: false
 """
+
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        x = n//3
+        for i in range(x):
+            if i**3==n:
+                return True
+        return False
+
+test =Solution()
+print(test.isPowerOfThree(27))
