@@ -29,7 +29,7 @@ def validSolution1(board):
 	return not x
 
 
-print(validSolution1([[1, 2, 3, 4, 5, 6, 7, 8, 9],
+print(valid_solution([[1, 2, 3, 4, 5, 6, 7, 8, 9],
 					[2, 3, 4, 5, 6, 7, 8, 9, 1],
 					[3, 4, 5, 6, 7, 8, 9, 1, 2],
 					[4, 5, 6, 7, 8, 9, 1, 2, 3],
