@@ -23,6 +23,16 @@ The above arrows point to positions where the corresponding bits are different.
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
         return bin(x^y).count('1')
+
+    def hammingDistance1(self, x: int, y: int)-> int:
+        mask = x ^ y
+        out = 0
+        while mask:
+            if mask%2:
+                out += 1
+            mask //= 2
+        return out
+
 	
 test = Solution()
-print(test.hammingDistance(1, 4))
+print(test.hammingDistance1(1, 4))
