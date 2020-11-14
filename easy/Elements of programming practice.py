@@ -170,7 +170,7 @@ def parity1(x:int)->int:
         result ^= 1
         x &= x - 1
     return result
-
+#
 # def parity_cashing(x:int)->int:
 # 	mask_size = 16
 # 	bit_mask = 0xFFFF
