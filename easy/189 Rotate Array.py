@@ -57,7 +57,13 @@ def rot(nums, k):
 	nums[:]=nums[-k:]+nums[:-k]
 	return nums
 
+def rot1(nums, k):
+	a = list(nums)
+	for i in range(len(nums)):
+		nums[i] = a[(i-k)%len(nums)]
+	return nums
+
 test = Solution()
 print(test.rotate([1, 2, 3, 4, 5, 6, 7], 3))
 print(test.rotate([-1,-100,3,99], 2))
-print(rot([1, 2, 3, 4, 5, 6, 7], 3))
+print(rot1([1, 2, 3, 4, 5, 6, 7], 3))
