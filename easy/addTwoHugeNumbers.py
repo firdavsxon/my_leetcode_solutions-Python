@@ -58,14 +58,7 @@ def get_total_num(linked_list: ListNode):
 	current = current.next
 	while current:
 		val = current.value
-		if val < 10:
-			temp_num = (temp_num * 1000) + val
-		elif val < 100:
-			temp_num = (temp_num * 100) + val
-		elif val < 1000:
-			temp_num = (temp_num * 10) + val
-		else:
-			temp_num = (temp_num *10000) + val
+		temp_num = (temp_num *10000) + val
 		current = current.next
 	return temp_num
 
@@ -82,9 +75,10 @@ def make_linked_list(number: int):
 	current = output
 
 	while temp_list:
-		if current is not None:
+		while current.next:
 			current = current.next
-		current = ListNode(temp_list.pop())
+		current.next = ListNode(temp_list.pop())
+
 	return output
 
 
@@ -94,13 +88,13 @@ def printing_linked_list(linked_list):
 		print(current.value, end=" -> ")
 		current = current.next
 
-a = ListNode(None)
-a = ListNode(9876)
-a.next= ListNode(5432)
-a.next.next = ListNode(1999)
+a = ListNode(0)
+# a.next= ListNode(4)
+# a.next.next = ListNode(5)
 
-b = ListNode(1)
-b.next = ListNode(8001)
+b = ListNode(1234)
+b.next = ListNode(123)
+b.next.next = ListNode(0)
 
 ll = addTwoHugeNumbers(a, b)
 printing_linked_list(ll)
