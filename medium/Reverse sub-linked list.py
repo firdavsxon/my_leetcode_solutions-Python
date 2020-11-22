@@ -20,7 +20,7 @@ class Node:
 
 
 def reverse_sub(head, p, q):
-	if p ==q:
+	if p == q:
 		return head
 	# after skipping 'p-1' nodes, current will point to 'p'th node
 	i, prev, current = 0, None, head
