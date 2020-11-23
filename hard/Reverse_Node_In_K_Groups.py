@@ -49,12 +49,15 @@ def reverseNodesInKGroups(l, k):
 	if k == 0:
 		return l
 	p = l
-	p0 = 0
+	counter = 0
 	while p:
-		reverse_sub(l, p0 + 1, p0 + k)
-		for i in range(k - 1):
-			p0 += 1
-			p = p.next
+		counter += 1
+		p=p.next
+	for i in range(0, counter, k):
+		if i+k>counter:
+			break
+		l = reverse_sub(l, i+1, i + k)
+	return l
 
 
 def reverse_sub(node, p1, p2):
@@ -82,3 +85,27 @@ def reverse_sub(node, p1, p2):
 
 	last_node_of_sub_list.next = current
 	return node
+
+def printing(l):
+	while l:
+		print(l.value, end=' -> ')
+		l = l.next
+		
+l = ListNode(1)
+l.next = ListNode(2)
+l.next.next = ListNode(3)
+l.next.next.next = ListNode(4)
+l.next.next.next.next = ListNode(5)
+l.next.next.next.next.next = ListNode(6)
+l.next.next.next.next.next.next = ListNode(7)
+l.next.next.next.next.next.next.next = ListNode(8)
+l.next.next.next.next.next.next.next.next = ListNode(9)
+l.next.next.next.next.next.next.next.next.next= ListNode(10)
+l.next.next.next.next.next.next.next.next.next.next= ListNode(11)
+
+
+
+l = reverseNodesInKGroups(l, 3)
+printing(l)
+# lr = reverse_sub(l, 4, 6)
+# printing(lr)
