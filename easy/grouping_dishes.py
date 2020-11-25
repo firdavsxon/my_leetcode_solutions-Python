@@ -47,28 +47,54 @@ The array containing the grouped dishes.
 
 
 def groupingDishes(dishes):
-	hash_map = [{}
+	hash_map = {}
 	for l in dishes:
 		hash_map[l[0]] = l[1:]
-	print(hash_map)
 	ingridients = []
 	for list in dishes:
-		for
-	ing in list[1:]:
-	ingridients.append(ing)
+		for ing in list[1:]:
+			ingridients.append(ing)
 	ingridients_count = {}
 
-	temp = set()
+	temp = []
 	for ingridient in ingridients:
-		if
-	ingridient not in ingridients_count:
-	ingridients_count[ingridient] = 1
-	elif ingridient in ingridients_count:
-	ingridients_count[ingridient] += 1
-	if ingridients_count[ingridient] > 1:
-		temp.add(ingridient)
+		if ingridient not in ingridients_count:
+			ingridients_count[ingridient] = 1
+		elif ingridient in ingridients_count:
+			ingridients_count[ingridient] += 1
+		if ingridients_count[ingridient] > 1 and ingridients_count[ingridient] not in temp:
+			temp.append(ingridient)
+	temp.sort()
 
 	output = {}
+
+
+	for key, val in hash_map.items():
+		for j in temp:
+			if j not in output:
+				output[j] = []
+			if j in val:
+				output[j].append(key)
+
+	out = []
+	for key, val in output.items():
+		val.sort()
+	for key, val in output.items():
+		temp = []
+		temp.append(key)
+		for v in val:
+			temp.append(v)
+		out.append(temp)
+
+
+	return out
+
+
+dishes = [["Salad", "Tomato", "Cucumber", "Salad", "Sauce"],
+            ["Pizza", "Tomato", "Sausage", "Sauce", "Dough"],
+            ["Quesadilla", "Chicken", "Cheese", "Sauce"],
+            ["Sandwich", "Salad", "Bread", "Tomato", "Cheese"]]
+print(groupingDishes(dishes))
 
 
 
