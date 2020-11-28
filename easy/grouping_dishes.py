@@ -56,14 +56,15 @@ def groupingDishes(dishes):
 			ingridients.append(ing)
 	ingridients_count = {}
 
-	temp = []
+	temp = set()
 	for ingridient in ingridients:
 		if ingridient not in ingridients_count:
 			ingridients_count[ingridient] = 1
 		elif ingridient in ingridients_count:
 			ingridients_count[ingridient] += 1
 		if ingridients_count[ingridient] > 1 and ingridients_count[ingridient] not in temp:
-			temp.append(ingridient)
+			temp.add(ingridient)
+	temp = [i for i in temp]
 	temp.sort()
 
 	output = {}
