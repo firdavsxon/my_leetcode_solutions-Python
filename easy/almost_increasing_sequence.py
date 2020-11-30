@@ -35,7 +35,26 @@ Guaranteed constraints:
 Return true if it is possible to remove one element from the array in order to
 get a strictly increasing sequence, otherwise return false.
 """
+def find_bad_pair(a):
+	for i in range(len(a)-1):
+		if a[i]>= a[i+1]:
+			return i
+	return -1
+
 
 def almostIncreasingSequence(sequence):
-	pass
+	j = find_bad_pair(sequence)
+	if j==-1:
+		return True
+	if find_bad_pair(sequence[j-1:j]+sequence[j+1:])==-1:
+		return True
+	if find_bad_pair(sequence[j:j+1] + sequence[j+2:]) == -1:
+		return True
+	return False
 
+
+
+
+
+print(almostIncreasingSequence([10, 1, 2, 3, 4, 5]))
+print(almostIncreasingSequence([1, 2, 1, 2]))
