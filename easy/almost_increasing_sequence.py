@@ -53,8 +53,15 @@ def almostIncreasingSequence(sequence):
 	return False
 
 
+def almostIncreasingSequence1(sequence):
+	bad = 0
+	for i in range(1, len(sequence)):
+		if sequence[i]<= sequence[i-1]:
+			bad+=1
+			if bad>1: return False
+			if sequence[i]<= sequence[i-2] and sequence[i+1] <= sequence[i-1]: return False
+	return True
 
 
-
-print(almostIncreasingSequence([10, 1, 2, 3, 4, 5]))
-print(almostIncreasingSequence([1, 2, 1, 2]))
+print(almostIncreasingSequence1([10, 1, 2, 3, 4, 5]))
+print(almostIncreasingSequence1([1, 2, 1, 2]))
