@@ -49,8 +49,13 @@ class Solution:
 			n >>= 1
 		return result
 
+	def reverseBits1(self, n: int) -> int:
+		bin_string = '{:032b}'.format(n)
+		bin_string = bin_string[::-1]
+		return int(bin_string,2)
+
 
 
 
 test = Solution()
-print(test.reverseBits(964176192))
+print(test.reverseBits1(964176192))
