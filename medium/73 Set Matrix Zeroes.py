@@ -46,9 +46,9 @@ class Solution:
 		for zero in zeros:
 
 			for row in range(n):
-				for col in range(m):
-					matrix[row][zero[1]]=0
-					matrix[zero[0]][col] = 0
+				matrix[row][zero[1]] = 0
+			for col in range(m):
+				matrix[zero[0]][col] = 0
 		return matrix
 
 
