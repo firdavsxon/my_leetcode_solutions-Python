@@ -31,13 +31,36 @@ n == matrix[0].length
 from typing import List
 
 class Solution:
-	def setZeroes(self, matrix: List[List[int]]) -> None:
+	def setZeroes(self, matrix: List[List[int]]):
 		"""
 		Do not return anything, modify matrix in-place instead.
 		"""
+		n = len(matrix)
+		m = len(matrix[0])
+		zeros = []
+		for i in range(n):
+			for j in range(m):
+				if matrix[i][j]==0:
+					zeros.append([i,j])
+
+		for zero in zeros:
+
+			for row in range(n):
+				for col in range(m):
+					matrix[row][zero[1]]=0
+					matrix[zero[0]][col] = 0
+		return matrix
+
+
+
 
 
 matrix = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+matrix1 = [[0,1,2,0],
+		   [3,4,5,2],
+		   [1,3,1,5]]
+matrix2 = [[1,0]]
 
 test = Solution()
-test.setZeroes(matrix)
+func = test.setZeroes(matrix1)
+print(func)
