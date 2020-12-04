@@ -21,8 +21,25 @@ from typing import List
 
 class Solution:
 	def increasingTriplet(self, nums: List[int]) -> bool:
-		pass
+		if len(nums)<3:
+			return False
+
+		middle  = max(nums)
+		min_num = max(nums)
+
+		for i in range(len(nums)):
+			if min_num<middle<nums[i]:
+				return True
+			elif nums[i]<=min_num:
+				min_num = nums[i]
+			elif min_num <nums[i]<=middle:
+				middle = nums[i]
+		return False
+
 
 
 test = Solution()
-print(test.increasingTriplet([1,2,3,4,5,6]))
+# print(test.increasingTriplet([1,2,3,4,5,6]))
+nums = [2,4,-2,-3]
+num1= [2147483646,2147483647,2147483647]
+print(test.increasingTriplet(nums))
