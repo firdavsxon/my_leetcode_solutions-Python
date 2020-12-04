@@ -58,4 +58,4 @@ class Solution:
 
 
 test = Solution()
-print(test.reverseBits1(964176192))
+print(test.reverseBits(964176192))
