@@ -24,7 +24,7 @@ class ListNode:
 
 
 class Solution:
-	def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+	def removeNthFromEnd(self, head: ListNode, n: int) :
 		current = head
 		d = {}
 		i = 0
