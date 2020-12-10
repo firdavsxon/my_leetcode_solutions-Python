@@ -1,5 +1,5 @@
 """
-ou are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.
+You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.
 
 A number x is considered missing if x is in the range [lower, upper] and x is not in nums.
 
@@ -43,7 +43,7 @@ Output: ["-2"]
 
 Constraints:
 
--109 <= lower <= upper <= 109
+-10**9 <= lower <= upper <= 10**9
 0 <= nums.length <= 100
 lower <= nums[i] <= upper
 All the values of nums are unique.
@@ -53,8 +53,51 @@ from typing import List
 
 class Solution:
 	def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
-		pass
+		def helper(nums, lo,up):
+			if lo==up:
+				nums.append(str(lo))
+			else:
+				nums.append((str(lo)+"->"+str(up)))
+		output = []
+		if len(nums)<1:
+			helper(output, lower, upper)
+			return output
+		low= float('inf')
+		for i in range(lower, upper+1):
+			if i not in nums:
+				low = min(low, i)
+				if i+1 in nums:
+					up=i
+					helper(output, low,up)
+					low = float('inf')
+				if i==upper:
+					helper(output, low, upper)
+
+		return output
+
+	def findMissingRanges1(self, nums: List[int], lower: int, upper: int) -> List[str]:
+		def helper(nums, lo,up):
+			if lo==up:
+				nums.append(str(lo))
+			else:
+				nums.append((str(lo)+"->"+str(up)))
+		output = []
+		if len(nums)<1:
+			helper(output, lower, upper)
+			return output
+		if nums[0]>lower:
+			helper(output, lower, nums[0]-1)
+		for i in range(1, len(nums)):
+			if nums[i] - nums[i-1]>1:
+				helper(output, nums[i-1]+1, nums[i]-1)
+		if nums[len(nums)-1] <upper:
+			helper(output, nums[len(nums)-1]+1, upper)
+		return output
 
 
 test = Solution()
-print(test.findMissingRanges([0,1,3,50,75], lower= 0, upper=99))
+print(test.findMissingRanges1([0,1,3,50,75], lower= 0, upper=99))
+
+print(test.findMissingRanges1([-1], lower= -2, upper=-1))
+print(test.findMissingRanges1([], lower= 1, upper=1))
+print(test.findMissingRanges1([1000000000], lower= 0, upper=1000000000))
