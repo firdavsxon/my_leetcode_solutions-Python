@@ -57,8 +57,6 @@ class Solution:
         return head
 
 
-
-
     def p(self, root):
         cur = root
         while cur:
