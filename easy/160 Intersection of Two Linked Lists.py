@@ -41,6 +41,7 @@ You may assume there are no cycles anywhere in the entire linked structure.
 Each value on each linked list is in the range [1, 10^9].
 Your code should preferably run in O(n) time and use only O(1) memory.
 """
+from typing import Optional
 
 
 # Definition for singly-linked list.
@@ -51,16 +52,33 @@ class ListNode:
 
 
 class Solution:
-	def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+	def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
 		if headA is None or headB is None:
 			return None
 		node1, node2 = headA, headB
-
 
 		while node1 != node2:
 			node1 = headB if node1 is None else node1.next
 			node2 = headA if node2 is None else node2.next
 		return node1
+
+	def getIntersectionNode1(self, headA: ListNode, headB: ListNode) -> ListNode:
+		if headA is None or headB is None:
+			return None
+		node1, node2 = headA, headB
+		nodes = set()
+		while node1:
+			if node1 in nodes:
+				return node1
+			else:
+				nodes.add(node1)
+		while node2:
+			if node2 in nodes:
+				return node2
+			else:
+				nodes.add(node2)
+
+		return None
 
 	def p(self, root):
 		cur = root
@@ -90,8 +108,6 @@ def main():
 	test = Solution()
 
 	print(test.getIntersectionNode(root1, root2))
-
-
 
 
 main()
