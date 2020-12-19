@@ -1,5 +1,7 @@
 """
-Given an array strings, determine whether it follows the sequence given in the patterns array. In other words, there should be no i and j for which strings[i] = strings[j] and patterns[i] ≠ patterns[j] or for which strings[i] ≠ strings[j] and patterns[i] = patterns[j].
+Given an array strings, determine whether it follows the sequence given in the patterns array.
+ In other words, there should be no i and j for which strings[i] = strings[j] and patterns[i] ≠ patterns[j] or
+  for which strings[i] ≠ strings[j] and patterns[i] = patterns[j].
 
 Example
 
@@ -31,8 +33,17 @@ patterns.length = strings.length,
 
 Return true if strings follows patterns and false otherwise.
 """
+from collections import Counter, OrderedDict
 
 
 def areFollowingPatterns(strings, patterns):
-	pass
+	strings_map = {}
+	pattern_map = {}
+	for i in range(len(patterns)):
+		strings_map[patterns[i]] = strings[i]
+		pattern_map[strings[i]]= patterns[i]
+		if len(strings_map) != len(pattern_map):
+			return False
+	return True
 
+print(areFollowingPatterns(strings=["cat", "dog", "dog", "doggy", ], patterns=["a", "b", "c", "c"]))
