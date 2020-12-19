@@ -34,18 +34,17 @@ Guaranteed constraints:
 """
 
 def containsCloseNums(nums, k):
-    numbers= {}
-    for idx, num in enumerate(nums):
-        if  num not in numbers:
-            numbers[num] = [idx]
-        else:
-            numbers[num].append(idx)
-    for key, val in numbers.items():
-        n= len(numbers[key])
-        if n>1:
-            for i in range(1, n):
-                if numbers[key][i]-numbers[key][i-1]>k:
-                    return False
-    return True
+	numbers = {}
+	out = False
+	for idx, num in enumerate(nums):
+		if num not in numbers:
+			numbers[num] = idx
+		else:
+			if idx - numbers[num] <= k:
+				out= True
+			numbers[num] = idx
 
-print(containsCloseNums([1,2], 2))
+	return out
+
+
+print(containsCloseNums([1,0,1,1], 1))
