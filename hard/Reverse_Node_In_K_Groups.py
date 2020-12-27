@@ -90,7 +90,8 @@ def printing(l):
 	while l:
 		print(l.value, end=' -> ')
 		l = l.next
-		
+
+
 l = ListNode(1)
 l.next = ListNode(2)
 l.next.next = ListNode(3)
