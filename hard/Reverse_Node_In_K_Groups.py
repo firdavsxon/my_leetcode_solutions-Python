@@ -106,6 +106,8 @@ l.next.next.next.next.next.next.next.next.next.next= ListNode(11)
 
 
 
+
+
 l = reverseNodesInKGroups(l, 3)
 printing(l)
 # lr = reverse_sub(l, 4, 6)
