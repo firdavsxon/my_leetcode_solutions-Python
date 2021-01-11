@@ -20,6 +20,7 @@ class TreeNode:
 
 
 def traverse(root):
+
 	result = []
 	if root is None:
 		return result
