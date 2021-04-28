@@ -32,13 +32,14 @@ pairs[i].length = 2.
 """
 
 s = "abdc"
-pairs = [[1,4], [3,4]]
+pairs = [[1, 4], [3, 4]]
 
 s1 = "acxrabdz"
-pairs1 = [[1,3],
- [6,8],
- [3,8],
- [2,7]]
+pairs1 = [[1, 3],
+		  [6, 8],
+		  [3, 8],
+		  [2, 7]]
+
 
 def build_permitted_subs(pairs):
 	perm = []
@@ -78,23 +79,5 @@ def swap_lex_order(swap_str, _pairs):
 
 	return "".join(out)
 
-	# for _ in range(len(s)):
-	# 	for i in pairs:
-	# 		a = i[0]-1
-	# 		b = i[1]-1
-	# 		current = list(current)
-	# 		current[a], current[b] = current[b], current[a]
-	# 		current = ''.join(current)
-	# 		words.append(current)
-	# 	for j in range(len(current)):
-	# 		first = biggest[j]
-	# 		second = current[j]
-	# 		if first < second:
-	# 			biggest = current
-	# 			break
-	# return max(words)
-
 
 print(swap_lex_order(s1, pairs1))
-
-
