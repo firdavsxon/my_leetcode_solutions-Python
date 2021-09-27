@@ -28,4 +28,17 @@ All the characters of jewels are unique.
 
 class Solution:
 	def numJewelsInStones(self, jewels: str, stones: str) -> int:
-		pass
+		# output = 0
+		# for i in stones:
+		# 	if i in jewels:
+		# 		output += 1
+		return sum(1 for i in stones if i in jewels)
+
+
+test = Solution()
+
+jewels="aA"
+stones="aAAbbbb"
+print(test.numJewelsInStones(jewels, stones))
+
+
