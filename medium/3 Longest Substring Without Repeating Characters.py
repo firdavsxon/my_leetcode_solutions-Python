@@ -46,10 +46,13 @@ class Solution:
         return max_length
 
 
+
 test = Solution()
+print(test.lengthOfLongestSubstring(s="aab"))
 print(test.lengthOfLongestSubstring(s="abcabcbb"))
 print(test.lengthOfLongestSubstring(s="bbbbb"))
 print(test.lengthOfLongestSubstring(s="pwwkew"))
 print(test.lengthOfLongestSubstring(s=""))
+
 
 
