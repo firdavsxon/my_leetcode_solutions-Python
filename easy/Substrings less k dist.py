@@ -53,11 +53,9 @@ def subStringsLessKDist1(inputString, num):
 		# 	window_start += 1
 		if (window_end - window_start +1) == num+1 and len(set(inputString[window_start:window_end]))==num-1:
 			res.append(inputString[window_start:window_end])
-			window_start+=1
-			window_end+=1
-		else:
-			window_start+=1
-			window_end+=1
+		window_start+=1
+		window_end+=1
+
 
 	return res
 
