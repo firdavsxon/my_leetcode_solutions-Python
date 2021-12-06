@@ -20,3 +20,22 @@ class Solution:
 test = Solution()
 s = "PAYPALISHIRING"
 print(test.convert(s, numRows=3))
+
+
+
+array = [3,6,1,3,6,6,3]
+
+def find_unique(array):
+    from collections import Counter
+    h_map = Counter(array)
+    for key in h_map:
+        if h_map[key]==1:
+            return key
+
+        
+print(find_unique(array))
+
+
+
+
+

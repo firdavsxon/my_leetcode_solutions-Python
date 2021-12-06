@@ -35,7 +35,7 @@ def subStringsLessKDist1(inputString, num):
 	window_start = 0
 	res = []
 
-	hash_map = {}
+	# hash_map = {}
 	window_end = num
 	while window_end < len(inputString)+1:
 		# right_char = inputString[window_end]
