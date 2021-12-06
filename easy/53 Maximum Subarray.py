@@ -40,9 +40,11 @@ from typing import List
 class Solution:
 	def maxSubArray(self, nums: List[int]) -> int:
 		summa = 0
-		max_num = 0
+		max_num = nums[0]
 		for i in range(len(nums)):
-			summa = max(nums[i], summa+nums[i])
+			if summa<0:
+				summa = 0
+			summa+=nums[i]
 			max_num = max(max_num, summa)
 		return max_num
 
