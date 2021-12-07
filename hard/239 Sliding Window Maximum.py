@@ -50,22 +50,39 @@ class Solution:
 		from collections import deque
 		queue = deque()
 		res = []
-		l = r = 0
+		left = right = 0
 		size = len(nums)
-		while r < size:
-			while queue and (nums[r] > nums[queue[-1]]):
+		while right < size:
+			while queue and (nums[right] > nums[queue[-1]]):
 				queue.pop()
-			queue.append(r)
+			queue.append(right)
 
-			if l > queue[0]:
+			if left > queue[0]:
 				queue.popleft()
-			if r + 1 >= k:
+			if right + 1 >= k:
 				res.append(nums[queue[0]])
-				l += 1
-			r += 1
+				left += 1
+			right += 1
 		return res
+	
+	def max_sliding_window(self, nums, k):
+		max_num, window_start = float('-inf'), 0
+		res = []
+		for window_end in range(len(nums) + 1):
+
+			if window_end - window_start == k:
+				current_max = max(nums[window_start:window_end ])
+				max_num = max(max_num, current_max)
+				res.append(current_max)
+				window_start += 1
+
+		return res
+		
+		
 
 test = Solution()
-nums =[1,3,-1,-3,5,3,6,7]
-k = 3
+nums1 =[1,3,-1,-3,5,3,6,7]
+nums= [1,-1]
+k = 1
 print(test.maxSlidingWindow(nums, k))
+print(test.max_sliding_window(nums,k))
