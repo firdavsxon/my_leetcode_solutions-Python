@@ -46,6 +46,30 @@ class Solution:
         return max_length
 
 
+    def longest(self, s):
+        frequency = {}
+        max_length = window_start = 0
+
+        # try to extend the range [window_start, window_end]
+        for window_end in range(len(s)):
+            # if the map already contains the "right char", shrink the window from beginning
+            # so that we have only one occurrence of "right char"
+            if s[window_end] in frequency:
+                # update window start so if we have already latest character in map
+                # move window start next character position
+                window_start = max(window_start, frequency[s[window_end]] + 1)
+
+            frequency[s[window_end]] = window_end  # insert next character to map
+            # update last maximum length
+            max_length = max(max_length, window_end-window_start+1)
+
+        return max_length
+
+
+
+
+
+
 
 test = Solution()
 print(test.lengthOfLongestSubstring(s="aab"))
@@ -53,6 +77,7 @@ print(test.lengthOfLongestSubstring(s="abcabcbb"))
 print(test.lengthOfLongestSubstring(s="bbbbb"))
 print(test.lengthOfLongestSubstring(s="pwwkew"))
 print(test.lengthOfLongestSubstring(s=""))
+print(test.longest(s="bbbbb"))
 
 
 

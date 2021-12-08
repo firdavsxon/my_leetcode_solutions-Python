@@ -67,9 +67,27 @@ class Solution:
 			maximum = max(maximum, window_end-window_start + 1)
 		return maximum
 
+	def fruits_2(self, tree):
+		if not tree: return 0
+
+		fruits = {}
+		window_start, max_fruit = 0, 0
+		for idx, fruit in enumerate(tree):
+			fruits[fruit] = fruits.get(fruit, 0) + 1
+			while len(fruits)>2:
+				fruits[tree[window_start]] -= 1
+				if fruits[tree[window_start]] == 0:
+					del fruits[tree[window_start]]
+				window_start += 1
+			max_fruit = max(max_fruit, idx - window_start +1)
+		return max_fruit
+
+
+
 
 test = Solution()
 # print(test.totalFruit([1,2,1]))
 print(test.totalFruit([0,1,2,2]))
 # print(test.totalFruit(['A', 'B', 'C', 'A', 'C']))
+print(test.fruits_2(['A', 'B', 'C', 'A', 'C']))
 
