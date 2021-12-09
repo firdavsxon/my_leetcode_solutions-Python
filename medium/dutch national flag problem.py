@@ -19,26 +19,29 @@ Output: [0 0 1 2 2 2 ]
 """
 
 def dutch_flag_problem(arr):
-	# for i in range(len(arr)):
-	# 	right = len(arr) - 1
-	# 	left = i
-	# 	while left < right:
-	# 		if arr[left] > arr[right]:
-	# 			arr[left], arr[right] = arr[right], arr[left]
-	# 		right -= 1
-	low, high = 0, len(arr) -1
-	i=0
-	while i <= high:
+	low , high = 0, len(arr) - 1
+	for i in range(len(arr)):
 		if arr[i] == 0:
 			arr[i], arr[low] = arr[low], arr[i]
-			i+=1
 			low+=1
 		elif arr[i] == 1:
-			i += 1
-		else:
 			arr[i], arr[high] = arr[high], arr[i]
 			high -=1
 	return arr
+
+	# low, high = 0, len(arr) -1
+	# i=0
+	# while i <= high:
+	# 	if arr[i] == 0:
+	# 		arr[i], arr[low] = arr[low], arr[i]
+	# 		i+=1
+	# 		low+=1
+	# 	elif arr[i] == 1:
+	# 		i += 1
+	# 	else:
+	# 		arr[i], arr[high] = arr[high], arr[i]
+	# 		high -=1
+	# return arr
 
 
 

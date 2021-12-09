@@ -49,6 +49,39 @@ def shortest_window_sort(arr):
 
 	return high-low+1
 
+
+
+def new_functions_for_test_knodledge(nums):
+	low, high = 0, len(nums)-1
+	while low<len(nums)-1 and nums[low]<=nums[low+1]:
+		low+=1
+
+	if low == len(nums) - 1:
+		return 0
+
+	while high > 0 and nums[high] >= nums[high-1]:
+		high -=1
+
+	subarray_max_number = float('-inf')
+	subarray_min_number = float('inf')
+
+	for k in range(low, high+1):
+		subarray_max_number = max(subarray_max_number, nums[k])
+		subarray_min_number = min(subarray_min_number, nums[k])
+		
+	
+	while low>0  and nums[low-1]> nums[low]:
+		low-=1
+	
+	while high<len(nums)-1 and nums[high]> nums[high+1]:
+		high+=1
+	
+	return high-low+1
+
+	
+
+
 nums = [3, 2, 1]
 nums1 = [1, 2, 5, 3, 7, 10, 9, 12]
 print(shortest_window_sort(nums1))
+print(new_functions_for_test_knodledge(nums1))

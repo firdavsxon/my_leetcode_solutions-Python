@@ -88,7 +88,28 @@ def get_next_valid_char_index(str, index):
 	return index
 
 
+def new_backspace_function(str1, str2):
+	if not str1 or not str2:
+		return False
+
+	def helper(string):
+		new_string_list = []
+
+		for idx in range(len(string)):
+			if string[idx] != "#":
+				new_string_list.append(string[idx])
+			else:
+				new_string_list.pop()
+		return ''.join(new_string_list)
+
+	return helper(str1) == helper(str2)
+
 # print(comparing_strings_backspaces(str1="xy#z", str2="xzz#" ))
 print(comparing_strings_backspaces(str1="ab#c", str2="ad#c" ))
+
+str1 = "xy#z"
+str2 = "xzz#"
+
+print(new_backspace_function(str1, str2))
 
 
