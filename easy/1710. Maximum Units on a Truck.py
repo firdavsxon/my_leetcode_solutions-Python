@@ -55,3 +55,15 @@ test = Solution()
 boxTypes = [[1, 3], [2, 2], [3, 1]]
 truckSize = 4
 print(test.maximumUnits(boxTypes, truckSize))
+
+
+def fib(number):
+	if number<=1:
+		return number
+	f_minus2 = 0
+	f_minus1 = 1
+	for i in range(number):
+		f_minus2, f_minus1 = f_minus1, f_minus2 + f_minus1
+	return f_minus1
+
+print(fib(50))
