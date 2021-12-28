@@ -83,5 +83,40 @@ def new_functions_for_test_knodledge(nums):
 
 nums = [3, 2, 1]
 nums1 = [1, 2, 5, 3, 7, 10, 9, 12]
-print(shortest_window_sort(nums1))
-print(new_functions_for_test_knodledge(nums1))
+# print(shortest_window_sort(nums1))
+# print(new_functions_for_test_knodledge(nums1))
+
+def shortest(arr):
+	if len(arr)==0:
+		return 0
+	left = find_left_idx(arr)
+	right = find_right_idx(arr)
+	if left!=right:
+		return right-left+1
+	return 0
+
+def find_left_idx(arr):
+	left = 0
+	right = len(arr)-1
+	left_start = 0
+	while left<right:
+		if arr[left] > arr[left+1]:
+			left_start = left
+			break
+		left+=1
+	return left_start
+
+def find_right_idx(arr):
+	left = 0
+	right = len(arr) - 1
+	right_end = 0
+	while left < right:
+		if arr[right] < arr[right - 1]:
+			right_end = right
+			break
+		right -= 1
+	return right_end
+
+print(shortest([1,2,3,8,4,7,5,9,10,11]))
+
+

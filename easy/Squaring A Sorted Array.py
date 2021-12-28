@@ -52,3 +52,25 @@ def make_square_groock(arr):
 nums = [-2, -1, 0, 2, 3]
 print(make_squares(nums))
 print(make_square_groock(nums))
+
+
+def make_square(array):
+	if len(array) == 0:
+		return []
+	if len(array) == 1:
+		return [array[0]**2]
+	new_array = []
+	left = 0
+	right = len(array) - 1
+	while left != right:
+		if array[left] **2 > array[right]**2:
+			new_array.append(array[left]**2)
+			left +=1
+		else:
+			new_array.append(array[right]**2)
+			right -=1
+	new_array.append(array[left]**2)
+	return new_array[::-1]
+
+
+print(make_square([-2, -1, 0, 2, 3]))

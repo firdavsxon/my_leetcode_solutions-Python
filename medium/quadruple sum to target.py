@@ -38,6 +38,14 @@ def search_quadruplets(arr, target):
 	return quadruplets
 
 nums= [2, 0, -1, 1, -2, 2]
-nums1 = [4, 1, 2, -1, 1, -3]
+nums2 = [4, 1, 2, -1, 1, -3]
+nums1 = [2,2,2,2,2]
 
-print(search_quadruplets(nums1, 1))
+print(search_quadruplets(nums1, 8))
+
+# [4, 1, 2, -1, 1, -3]
+# [-3, -1, 1, 1, 2, 4]
+def search_quadreplets(arr, target):
+	arr.sort()
+	for i in range(len(arr)):
+		current = arr[i]

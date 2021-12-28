@@ -113,3 +113,7 @@ str2 = "xzz#"
 print(new_backspace_function(str1, str2))
 
 
+def backspace_compare3(str1, str2):
+	pass
+
+
