@@ -46,3 +46,39 @@ class Solution:
 
 test = Solution()
 print(test.minWindow("ADOBECODEBANC", "ABC"))
+
+
+def number_modify(lst, pos):
+	last_zero_pos = float('-inf')
+	for idx, num in enumerate(lst):
+		if num == '0' and idx > pos:
+			last_zero_pos = idx
+	if last_zero_pos != float('-inf'):
+		lst[0], lst[last_zero_pos] = lst[last_zero_pos], lst[0]
+
+
+def asteriks_modify(lst, position):
+	lst[position - 2], lst[position - 1] = lst[position - 1], lst[position - 2]
+	lst = lst[:position] + lst[position + 1:]
+	return lst
+
+
+def decryptPassword(s):
+	print(s)
+	numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+	s_list = [i for i in s]
+	print(s_list)
+	i = 0
+	while i < len(s_list):
+		if s_list[i] in numbers:
+			number_modify(s_list, i)
+		elif s_list[i] == "*":
+			s_list = asteriks_modify(s_list, i)
+		i +=1
+	for i in reversed(s_list):
+		if i == '0':
+			s_list.pop(i)
+
+	return ''.join(s_list)
+
+

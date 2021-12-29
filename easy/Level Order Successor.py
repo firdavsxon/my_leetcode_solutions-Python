@@ -39,6 +39,21 @@ def find_successor(root, key):
 	return queue[0].val if queue else None
 
 
+def level_order_successor(root, key):
+	if not root:
+		return []
+	queue = deque()
+	queue.append(root)
+
+	while queue:
+		current_node = queue.popleft()
+		if current_node.left:
+			queue.append(current_node.left)
+		if current_node.right:
+			queue.append(current_node.right)
+		if current_node.val == key:
+			break
+	return queue[0].val if queue else None
 
 def main():
 	root = TreeNode(12)
@@ -47,7 +62,7 @@ def main():
 	root.left.left = TreeNode(9)
 	root.right.left = TreeNode(10)
 	root.right.right = TreeNode(5)
-	print("Level order traversal: " + str(find_successor(root, 9)))
+	print("Level order traversal: " + str(level_order_successor(root, 9)))
 
 
 main()

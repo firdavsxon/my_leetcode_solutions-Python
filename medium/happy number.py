@@ -192,3 +192,34 @@ def is_happy(number: int) -> bool:
 print(find_happy_number(12))
 
 print(is_happy(12))
+
+
+def find_h(num):
+	slow, fast = num, num
+
+	while True:
+		slow = find_sq(slow)
+		fast = find_sq(find_square(fast))
+		if slow==fast:
+			break
+	return slow ==1
+
+def find_sq(num):
+	summa = 0
+	while num > 0:
+		res = num % 10
+		summa += res**2
+		num = num//10
+	return summa
+
+
+print(find_h(89))
+
+
+
+
+
+
+
+
+

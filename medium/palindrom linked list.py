@@ -59,15 +59,14 @@ def reverse(head):
 
 
 def main():
-	head = Node(2)
-	head.next  = Node(4)
-	head.next.next = Node(6)
-	head.next.next.next = Node(4)
-	head.next.next.next.next = Node(2)
+	head = Node(1)
+	head.next  = Node(2)
+	head.next.next = Node(2)
+	head.next.next.next = Node(1)
 
 	print("Linked list is palindrome: " + str(is_palindrome(head)))
 
-	head.next.next.next.next.next = Node(2)
+	head.next.next.next.next = Node(2)
 
 	print("Linked list is a planidrome: " + str(is_palindrome(head)))
 
