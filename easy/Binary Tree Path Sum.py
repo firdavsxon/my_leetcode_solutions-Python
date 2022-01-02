@@ -20,17 +20,100 @@ def has_path(root, sum):
 
 	return has_path(root.left, sum - root.val) or has_path(root.right, sum - root.val)
 
+def has_sum(root, sum_num):
+	if not root:
+		return False
+	if dfs(root, 0, sum_num):
+		return True
+	return False
+
+
+def dfs(root, num, sum_num, all_sum):
+	if not root:
+		return
+	if root:
+		num += root.val
+	if root.left is None and root.right is None and num == sum_num:
+		all_sum.append(1)
+		return
+	dfs(root.left, num, sum_num, all_sum)
+	dfs(root.right, num, sum_num, all_sum)
+
+
+def all_paths(node, s):
+	all_sum = []
+	if not node:
+		return 0
+	dfs(node, 0, s, all_sum)
+	return len(all_sum)
+
+
+def total_sum_binary(root):
+	total_summa = []
+	if not root:
+		return 0
+	dfs_total(root, 0, total_summa)
+	return sum(total_summa)
+
+
+def dfs_total(root, current, summa):
+	if not root:
+		return
+	if root:
+		current = 10*current + root.val
+	if root.left is None and root.right is None:
+		summa.append(current)
+
+	dfs_total(root.left, current, summa)
+	dfs_total(root.right, current, summa)
+
+
+def binary_tree_seq(root, sequence):
+	if not root:
+		return False
+	if binary_seq(root, [], sequence):
+		return True
+	return False
+
+def binary_seq(root, current, sequence):
+	if not root:
+		return False
+	if root:
+		current.append(root.val)
+	if root.left is None and root.right is None:
+		if current == sequence:
+			return True
+		elif current != sequence:
+			while len(current)!=1:
+				current.pop()
+			return False
+	return binary_seq(root.left, current, sequence) or binary_seq(root.right, current, sequence)
+
+
+def count_path(root, num):
+	result = []
+	if not root:
+		return 0
+	dfs_path_sub_sum(root, num, result)
+
+
+def dfs_path_sub_sum(root, num, result):
+	if not root:
+		return
+	if root:
+
 
 def main():
-	root = TreeNode(12)
-	root.left = TreeNode(7)
-	root.right = TreeNode(1)
-	root.left.left = TreeNode(9)
-	root.right.left = TreeNode(10)
-	root.right.right = TreeNode(5)
+	root = TreeNode(10)
+	root.left = TreeNode(5)
+	root.right = TreeNode(4)
+	root.left.left = TreeNode(3)
+	root.left.right = TreeNode(11)
+	root.right.left = TreeNode(23)
+	root.right.right = TreeNode(8)
 
-	print("Tree has path: " + str(has_path(root, 23)))
-	print("Tree has path: " + str(has_path(root, 16)))
+	print("Tree has path: " + str(total_sum_binary(root)))
+	print("Tree has path: " + str(binary_tree_seq(root, [10, 5, 3])))
 
 
 main()
