@@ -94,25 +94,47 @@ def count_path(root, num):
 	result = []
 	if not root:
 		return 0
-	dfs_path_sub_sum(root, num, result)
+	dfs_path_sub_sum(root, num, [], result)
+	return result
 
 
-def dfs_path_sub_sum(root, num, result):
+def dfs_path_sub_sum(root, num, current, result):
 	if not root:
 		return
 	if root:
+		current.append(root.val)
+	if sum(current) > num:
+		temp = [val for val in current]
+		while sum(temp) > num:
+			temp.pop(0)
+		if sum(temp) == num:
+			result.append(temp)
+
+	if sum(current) == num:
+		result.append(current)
+	if root.left is None and root.right is None:
+		current.pop()
+		return
+	dfs_path_sub_sum(root.left, num, current, result)
+	dfs_path_sub_sum(root.right, num, current, result)
+
+
+
+
+
 
 
 def main():
-	root = TreeNode(10)
-	root.left = TreeNode(5)
-	root.right = TreeNode(4)
-	root.left.left = TreeNode(3)
-	root.left.right = TreeNode(11)
-	root.right.left = TreeNode(23)
-	root.right.right = TreeNode(8)
+	root = TreeNode(12)
+	root.left = TreeNode(7)
+	root.right = TreeNode(1)
+	root.left.left = TreeNode(4)
+	# root.left.right = TreeNode(6)
+	root.right.left = TreeNode(10)
+	root.right.right = TreeNode(5)
+	# root.right.right = TreeNode(3)
 
-	print("Tree has path: " + str(total_sum_binary(root)))
+	print("Tree has path: " + str(count_path(root, 11)))
 	print("Tree has path: " + str(binary_tree_seq(root, [10, 5, 3])))
 
 
