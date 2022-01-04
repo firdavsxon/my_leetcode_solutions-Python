@@ -49,6 +49,7 @@ class MedianFinder:
 
     #   [1,2,3] [4,5,6]
     def addNum(self, num: int) -> None:
+
         if not self.max_heap or -self.max_heap[0] >= num:
             heappush(self.max_heap, -num)
         else:
@@ -59,6 +60,8 @@ class MedianFinder:
             heappush(self.min_heap, -heappop(self.max_heap))
         elif len(self.max_heap) < len(self.min_heap):
             heappush(self.max_heap, -heappop(self.min_heap))
+        ma = self.max_heap
+        mi = self.min_heap
 
     def findMedian(self) -> float:
         if len(self.max_heap) == len(self.min_heap):

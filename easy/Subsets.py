@@ -30,3 +30,11 @@ def find_subsets(nums):
 
 print(find_subsets([1,5,3]))
 
+
+def find_sub(nums):
+	res = []
+	res.append([])
+	for i in nums:
+		res.append(current_level)
+
+
