@@ -14,6 +14,8 @@ For example, {1, 2, 3} has the following six permutations:
 If a set has ‘n’ distinct elements it will have n!n! permutations.
 """
 from collections import deque
+
+
 def find_permutation(nums):
 	nums_length = len(nums)
 	result = []
@@ -23,9 +25,9 @@ def find_permutation(nums):
 		n = len(permutations)
 		for _ in range(n):
 			old_permutation = permutations.popleft()
-			for j in range(len(old_permutation)+1):
+			for j in range(len(old_permutation) + 1):
 				new_permutation = list(old_permutation)
-				new_permutation.insert(j ,current_number)
+				new_permutation.insert(j, current_number)
 				if len(new_permutation) == nums_length:
 					result.append(new_permutation)
 				else:
@@ -43,10 +45,24 @@ def generate_permuattions_recuresive(nums, index, current_permutation, result):
 	if index == len(nums):
 		result.append(current_permutation)
 	else:
-		for i in range(len(current_permutation)+1):
+		for i in range(len(current_permutation) + 1):
 			new_permutation = list(current_permutation)
 			new_permutation.insert(i, nums[index])
-			generate_permuattions_recuresive(nums, index +1, new_permutation, result)
+			generate_permuattions_recuresive(nums, index + 1, new_permutation, result)
+
+from typing import List
 
 
-print(find_permutations_recursive([1,3,5]))
+def permuteUnique(nums: List[int]) -> List[List[int]]:
+	return dfs(sorted(nums), [], [])
+
+
+def dfs(nums: List[int], path: List[int], res: List[List[int]]) -> List[List[int]]:
+	if not nums: res.append(path)
+	for i in range(len(nums)):
+		if i > 0 and nums[i] == nums[i - 1]: continue
+		dfs(nums[:i] + nums[i + 1:], path + [nums[i]], res)
+	return res
+
+
+print(permuteUnique([1, 1, 2]))

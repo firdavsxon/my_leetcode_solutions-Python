@@ -32,9 +32,37 @@ print(find_subsets([1,5,3]))
 
 
 def find_sub(nums):
-	res = []
-	res.append([])
-	for i in nums:
-		res.append(current_level)
+	nums.sort()
+	subsets = []
+	subsets.append([])
+	for num in nums:
+		current_level = len(subsets)
+		for j in range(current_level):
+			new = list(subsets[j])
+			new.append(num)
+			subsets.append(new)
+
+	return subsets
+
+def find_subs1(nums):
+	nums.sort()
+	subsets = [[]]
+	start_idx, end_idx = 0, 0
+	for idx in range(len(nums)):
+		start_idx = 0
+
+		if idx > 0 and nums[idx] == nums[idx-1]:
+			start_idx = end_idx + 1
+		end_idx = len(subsets) -1
+		for index in range(start_idx, end_idx+1):
+			new = list(subsets[index])
+			new.append(nums[idx])
+			subsets.append(new)
+	return subsets
+
+
+
+
+print(find_subs1([1,2,2]))
 
 
