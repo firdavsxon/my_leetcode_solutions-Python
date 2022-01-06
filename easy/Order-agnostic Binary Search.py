@@ -25,27 +25,46 @@ Output: 2
 
 
 class Solution:
-	def binary_search(self,arr, key):
-		if not arr:
-			return -1
 
-		if arr[0]>arr[-1]:
-			dec = True
-		else:
-			dec = False
-			#    1, 2 ,3 ,4 , 5, 6, 7, 8, 9, 10
-		i = 0
-		n = len(arr) - 1
-		mid = n // 2
-		while i < n:
-			if arr[mid]==key:
+	def binary_search(self,arr,lo, hi, key):
+		if hi>=1:
+
+			mid =(lo + hi)//2
+
+			if arr[mid] == key:
 				return mid
-			elif arr[mid]>
+
+			elif arr[mid] > key:
+				return self.binary_search(arr, lo, mid - 1, key)
+			else:
+				return self.binary_search(arr, mid+1, hi, key)
+		return -1
 
 
+
+	def binary_search1(self, arr, key):
+		start , end = 0, len(arr)-1
+		is_ascending = arr[start]<arr[end]
+		while start <= end:
+			mid = start + (end-start)//2
+			if arr[mid] == key:
+				return mid
+			if is_ascending:
+				if arr[mid] > key:
+					end = mid -1
+				else:
+					start = mid+1
+			else:
+				if arr[mid] < key:
+					end = mid - 1
+				else:
+					start = mid + 1
+		return -1
 
 
 test = Solution()
-arr = [1,2,3,4,6,8,9,10]
-key = 10
-test.binary_search(arr, key)
+arr = [1,2,3,4,5,]
+arr1 = [5,4,3,2,1]
+key = 5
+# print(test.binary_search(arr, 0, len(arr), key))
+print(test.binary_search1(arr1, key))
