@@ -75,7 +75,42 @@ def generateParenthesis1( n: int) -> List[str]:
 	return result
 
 test = Solution()
-print(test.generateParenthesis(3))
+# print(test.generateParenthesis(3))
+
+
+
+# test myself
+
+class P:
+	def __init__(self, string, open_count, close_count):
+		self.string = string
+		self.open_count = open_count
+		self.close_count = close_count
+
+
+class S:
+	def generate(self,  num):
+		result = []
+		queue = deque()
+		queue.append(P("", 0,0))
+
+		while queue:
+			p = queue.popleft()
+			if p.open_count == num and p.close_count == num:
+				result.append(p.string)
+			else:
+				if p.open_count < num:
+					queue.append(P(p.string+"(", p.open_count+1, p.close_count))
+				if p.close_count < p.open_count:
+					queue.append(P(p.string+")", p.open_count, p.close_count+1))
+		return result
+
+t =S()
+print(t.generate(3))
+
+
+
+
 
 
 
