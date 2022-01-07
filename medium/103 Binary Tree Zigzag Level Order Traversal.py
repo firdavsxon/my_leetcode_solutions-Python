@@ -67,3 +67,35 @@ def main():
 
 
 main()
+
+
+def find_grants_cap(grantsArray, newBudget):
+	grants_amount = len(grantsArray)
+	cap = newBudget / grants_amount
+	low_budget = 0
+	for grant in grantsArray:
+		if grant <= cap:
+			low_budget += 1
+			newBudget -= grant
+	new_cap = newBudget / (grants_amount - low_budget)
+
+	return new_cap
+
+def find1(grantsArray, newBudget):
+	len_salaries = len(grantsArray)
+	grantsArray.sort()
+
+	funds_left = newBudget
+
+	for i, current_salary in enumerate(grantsArray):
+		emp_left = len_salaries - i
+		candidate_spendeture = emp_left * current_salary
+		if candidate_spendeture > funds_left:
+			return funds_left / float(emp_left)
+		funds_left -= current_salary
+
+	return 0
+grantsArray = [2,100,50,120,167]
+newBudget = 400
+print(find_grants_cap(grantsArray, newBudget))
+print(find1(grantsArray, newBudget))

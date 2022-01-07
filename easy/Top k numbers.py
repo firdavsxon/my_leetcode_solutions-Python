@@ -23,13 +23,22 @@ Output: [12, 11, 12]
 """
 from heapq import *
 
+
 class Solution:
 
-	def find_k_largest_numbers(self, num, k):
-		pass
+	def find_k_largest_numbers(self, nums, k):
+		min_heap = []
+		for i in range(k):
+			heappush(min_heap, nums[i])
+
+		for i in range(k, len(nums)):
+			if nums[i] > min_heap[0]:
+				heappop(min_heap)
+				heappush(min_heap, nums[i])
+		return list(min_heap)
 
 
 test = Solution()
 array = [3, 1, 5, 12, 2, 11]
 k = 3
-test.find_k_largest_numbers(array, k)
+print(test.find_k_largest_numbers(array, k))
