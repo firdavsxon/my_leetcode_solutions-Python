@@ -51,15 +51,24 @@ class TreeNode:
 
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> Optional[List[int]]:
-        pass
+
+        if root.left:
+            self.inorderTraversal(root.left)
+        print(root.val, end=' ')
+        if root.right:
+            self.inorderTraversal(root.right)
+
+
+
 
 
 def main():
-    root1 = TreeNode(4)
-    root1.next = TreeNode(1)
-    root1.next.next = TreeNode(8)
-    root1.next.next.next = TreeNode(4)
-    root1.next.next.next.next = TreeNode(5)
+    root1 = TreeNode(1)
+    # root1.left = TreeNode(1)
+    root1.right = TreeNode(2)
+    # root1.right.next = TreeNode(8)
+    # root1.next.next.next = TreeNode(4)
+    # root1.next.next.next.next = TreeNode(5)
     # root1.next.next.next.next.next = TreeNode(6)
     # root1.next.next.next.next.next.next = TreeNode(7)
     # root1.next.next.next.next.next.next.next = TreeNode(8)
